@@ -5,12 +5,12 @@ title: resume
 <link rel="stylesheet" type="text/css" href="./assets/css/resume.css" />
 
 # Yasmin Herrera
-## Software Developer II <br>Newark, DE
+## Software Engineer II <br>Newark, DE
 * yherr.dev@gmail.com
 * [linkedin.com/in/yherr](https://www.linkedin.com/in/yherr/) 
 
 ## Summary
-Software Engineer with 5 years of experience developing, supporting, and automating enterprise Java applications in regulated financial environments. Strong background in backend development, secure systems integration, CI/CD automation, Kubernetes/OpenShift operations, and production support. Experienced in HashiCorp Vault, credential lifecycle management, REST API design, API documentation, and cross-functional collaboration with engineering, operations, and business stakeholders to deliver scalable, reliable solutions.
+Software Engineer with 5 years of experience developing, supporting, and automating enterprise Java applications in regulated financial environments. Strong background in backend development, secure systems integration, CI/CD automation, Kubernetes/OpenShift operations, and production support. Experienced in HashiCorp Vault, credential lifecycle management, REST API design, API documentation, and cross-functional collaboration with engineering, operations, and business stakeholders to deliver secure, scalable, and reliable solutions.
 
 ## Technical Skills
 * Java / Spring Boot / REST APIs
@@ -26,8 +26,8 @@ Software Engineer with 5 years of experience developing, supporting, and automat
 
 ## Work Experience
 ### Bank of America<br>Newark, DE
-**Software Developer II**<br>
-*07/2020 - Present*
+**Software Engineer II**<br>
+*08/2024 - Present*
 * Designed, developed, and maintained Java-based enterprise applications and REST services supporting mission-critical business workflows in a regulated financial environment.
 * Integrated HashiCorp Vault and implemented automated password rotation for shared service accounts in Kubernetes/OpenShift, reducing manual intervention, improving security compliance, and minimizing operational risk during credential expiration cycles.
 * Built and maintained internal automation for secrets lifecycle management, enabling secure and reliable service account operations across containerized environments.
@@ -38,7 +38,7 @@ Software Engineer with 5 years of experience developing, supporting, and automat
 * Improved team efficiency by developing automation workflows and AI-assisted tooling to review logs, update project documentation, and accelerate repetitive tasks across Jenkins, Bitbucket, Jira, and Confluence.
 
 ### Bank of America <br>Newark, DE  
-**Software Developer I**<br>
+**Software Engineer I**<br>
 **Full-Stack Development Program (Internal)**<br>
 _08/2021 - 11/2021_<br>
 * Developed front-end and back-end solutions using Angular and Java in an internal full-stack program focused on delivering end-to-end application functionality.
