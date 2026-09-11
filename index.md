@@ -8,16 +8,14 @@ title: resume
     text-align: left !important;
   }
 
-  .inner {
+  #main_content.inner {
     max-width: 1100px !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
     text-align: left !important;
-  }
-
-  #main_content,
-  #main_content_wrap,
-  section.inner {
-    text-align: left !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 
   #main_content h1,
