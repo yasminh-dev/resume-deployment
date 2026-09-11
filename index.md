@@ -27,7 +27,7 @@ Software Engineer with 5 years of experience developing, supporting, and automat
 ## Work Experience
 ### Bank of America<br>Newark, DE
 **Software Engineer II**<br>
-*08/2024 - Present*
+*08/01/2024 - Present*
 * Designed, developed, and maintained Java-based enterprise applications and REST services supporting mission-critical business workflows in a regulated financial environment.
 * Integrated HashiCorp Vault and implemented automated password rotation for shared service accounts in Kubernetes/OpenShift, reducing manual intervention, improving security compliance, and minimizing operational risk during credential expiration cycles.
 * Built and maintained internal automation for secrets lifecycle management, enabling secure and reliable service account operations across containerized environments.
@@ -39,11 +39,11 @@ Software Engineer with 5 years of experience developing, supporting, and automat
 
 ### Bank of America <br>Newark, DE  
 **Software Engineer I**<br>
-**Full-Stack Development Program (Internal)**<br>
-_08/2021 - 11/2021_<br>
+_08/01/2021 - 07/31/2024_<br>
 * Developed front-end and back-end solutions using Angular and Java in an internal full-stack program focused on delivering end-to-end application functionality.
 * Collaborated on application design, implementation, and testing to support full-feature development across the software lifecycle.
 * Presented project work to managers and team leads, demonstrating technical understanding, problem-solving ability, and strong team collaboration.
+* Contributed to production application development, quality assurance, and support activities while progressing from internal development program to full engineering responsibilities.
 
 ### Year Up United<br>Wilmington, DE
 **Student/Developer Intern**<br>
