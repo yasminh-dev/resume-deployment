@@ -1,0 +1,111 @@
+body {
+  background: #ffffff !important;
+  color: #1f1f1f !important;
+  text-align: left !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#header_wrap,
+#footer_wrap,
+#forkme_banner,
+#project_title,
+#project_tagline {
+  display: none !important;
+}
+
+#main_content_wrap {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+#main_content.inner,
+section.inner {
+  max-width: 920px !important;
+  margin: 0 auto !important;
+  padding: 24px 28px 40px !important;
+  text-align: left !important;
+  background: #ffffff !important;
+}
+
+#main_content h1,
+#main_content h2,
+#main_content h3,
+#main_content h4,
+#main_content p,
+#main_content li,
+#main_content ul,
+#main_content ol {
+  text-align: left !important;
+  color: #1f1f1f !important;
+}
+
+#main_content h1 {
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  margin: 0 0 8px 0 !important;
+  letter-spacing: normal !important;
+}
+
+#main_content h2 {
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  border-bottom: 1px solid #d6d6d6 !important;
+  padding-bottom: 4px !important;
+  margin: 22px 0 10px 0 !important;
+  letter-spacing: normal !important;
+}
+
+#main_content h3 {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  margin: 14px 0 4px 0 !important;
+}
+
+#main_content p,
+#main_content li {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+#main_content ul,
+#main_content ol {
+  margin: 0 0 12px 0 !important;
+  padding-left: 1.4rem !important;
+}
+
+#main_content em {
+  font-style: normal !important;
+  color: #444 !important;
+}
+
+#main_content strong {
+  font-weight: 700 !important;
+}
+
+#main_content a {
+  color: #0b57d0 !important;
+  text-decoration: none !important;
+}
+
+#main_content a:hover {
+  text-decoration: underline !important;
+}
+
+@media (max-width: 640px) {
+  #main_content.inner,
+  section.inner {
+    padding: 18px 16px 28px !important;
+  }
+
+  #main_content h1 {
+    font-size: 1.8rem !important;
+  }
+
+  #main_content h2 {
+    font-size: 1.2rem !important;
+  }
+}

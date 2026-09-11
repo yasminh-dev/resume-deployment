@@ -2,37 +2,7 @@
 layout: default
 title: resume
 --- 
-<link rel="stylesheet" type="text/scss" media="all" href="./style.scss" />
-<style>
-  body {
-    text-align: left !important;
-  }
-
-  #main_content.inner {
-    max-width: 1100px !important;
-    margin: 0 !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-    text-align: left !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
-  }
-
-  #main_content h1,
-  #main_content h2,
-  #main_content h3,
-  #main_content h4,
-  #main_content p,
-  #main_content li,
-  #main_content ul,
-  #main_content ol {
-    text-align: left !important;
-  }
-
-  ul, ol {
-    padding-left: 1.5rem;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="./assets/css/resume.css" />
 
 # Yasmin Herrera
 ## Software Developer II <br>Newark, DE
