@@ -23,11 +23,13 @@ body {
 
 #main_content.inner,
 section.inner {
-  max-width: 920px !important;
+  width: 100% !important;
+  max-width: 900px !important;
   margin: 0 auto !important;
   padding: 24px 28px 40px !important;
   text-align: left !important;
   background: #ffffff !important;
+  box-sizing: border-box !important;
 }
 
 #main_content h1,
