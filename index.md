@@ -3,6 +3,29 @@ layout: default
 title: resume
 --- 
 <link rel="stylesheet" type="text/scss" media="all" href="./style.scss" />
+<style>
+  body {
+    text-align: left !important;
+  }
+
+  .wrapper,
+  .page-content,
+  .container,
+  .main-content,
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  h1, h2, h3, h4, p, li, ul, ol {
+    text-align: left;
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+  }
+</style>
 
 # Yasmin Herrera
 ## Software Developer II <br>Newark, DE
