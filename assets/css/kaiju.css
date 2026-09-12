@@ -1,0 +1,299 @@
+/* Kaiju-themed interactive resume showcase — standalone page, no theme dependency. */
+
+:root {
+  --bg-night: #0b0f1a;
+  --bg-dusk: #1b1330;
+  --bg-ember: #3a1420;
+  --ember: #ff6a3d;
+  --ember-bright: #ffb347;
+  --ember-dark: #7a2a12;
+  --rubble: #2e2a3a;
+  --rubble-light: #453f57;
+  --text-light: #f5f0e6;
+  --text-muted: #c9c3d6;
+  --mascot-fill: #16202e;
+  --mascot-eye: #ffb347;
+  --scroll-progress: 0;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-night);
+  color: var(--text-light);
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2 { color: var(--text-light); }
+
+a { color: var(--ember-bright); }
+a:hover { color: var(--ember); }
+
+/* Skip / accessibility utility links */
+.skip-link {
+  position: absolute;
+  left: 0;
+  top: -3rem;
+  background: var(--ember);
+  color: var(--bg-night);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+.noscript-banner {
+  position: relative;
+  z-index: 50;
+  background: var(--rubble);
+  color: var(--text-light);
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.ats-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 40;
+  background: rgba(11, 15, 26, 0.75);
+  border: 1px solid var(--rubble-light);
+  color: var(--text-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+.ats-link:hover { border-color: var(--ember); color: var(--ember-bright); }
+.ats-link-final { position: static; display: inline-block; background: none; border: 1px solid var(--rubble-light); }
+
+/* Horizontal scroll track */
+.kaiju-track {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge/IE */
+}
+.kaiju-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+}
+
+.scene {
+  position: relative;
+  flex: 0 0 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-night) 0%, var(--bg-dusk) 100%);
+  padding: 2rem;
+}
+
+/* Story progression: districts get more damaged / fiery as the rampage continues */
+.scene-0, .scene-1 { background: linear-gradient(180deg, #0b0f1a 0%, #201a38 100%); }
+.scene-2 { background: linear-gradient(180deg, #170f22 0%, #2a1830 100%); }
+.scene-3 { background: linear-gradient(180deg, #200e14 0%, var(--bg-ember) 100%); }
+.scene-4 { background: linear-gradient(180deg, #1c0f16 0%, #3a1c22 100%); }
+.scene-5 { background: linear-gradient(180deg, #14101c 0%, #2c1e2c 100%); }
+.scene-6 { background: linear-gradient(180deg, #0f1420 0%, #1e2436 100%); }
+.scene-7 { background: linear-gradient(180deg, #0d1420 0%, #1a2438 100%); }
+.scene-8 { background: linear-gradient(180deg, #12101c 0%, #26182a 100%); }
+
+/* Parallax layers: flat CSS shapes standing in for a skyline / rubble field, no bitmap assets */
+.layer {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  transform: translateX(calc(var(--scroll-progress, 0) * var(--depth, 0) * 1px));
+  pointer-events: none;
+}
+
+.layer-far {
+  bottom: 30%;
+  height: 22%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--rubble) 0 3%,
+    transparent 3% 4%,
+    var(--rubble-light) 4% 6%,
+    transparent 6% 8%
+  );
+  opacity: 0.55;
+  clip-path: polygon(0 100%, 0 40%, 5% 60%, 10% 20%, 16% 55%, 22% 10%, 28% 50%, 34% 30%,
+    40% 65%, 46% 15%, 52% 45%, 58% 5%, 64% 40%, 70% 25%, 76% 60%, 82% 35%,
+    88% 15%, 94% 50%, 100% 30%, 100% 100%);
+}
+
+.layer-near {
+  bottom: 0;
+  height: 32%;
+  background: linear-gradient(180deg, var(--rubble-light) 0%, var(--rubble) 100%);
+  opacity: 0.85;
+  clip-path: polygon(0 100%, 0 30%, 6% 55%, 12% 15%, 18% 45%, 24% 0%, 30% 40%, 36% 20%,
+    42% 60%, 48% 10%, 54% 35%, 60% 0%, 66% 30%, 72% 10%, 78% 50%, 84% 25%,
+    90% 5%, 96% 35%, 100% 15%, 100% 100%);
+}
+
+/* damage / fire intensify in the two main-role scenes */
+.scene-3 .layer-near, .scene-4 .layer-near {
+  background: linear-gradient(180deg, var(--ember-dark) 0%, var(--rubble) 100%);
+}
+.scene-3::after, .scene-4::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 90%, rgba(255, 106, 61, 0.35), transparent 60%);
+  pointer-events: none;
+}
+
+.scene-content {
+  position: relative;
+  z-index: 2;
+  max-width: 44rem;
+  width: 100%;
+  background: rgba(11, 15, 26, 0.55);
+  border: 1px solid rgba(245, 240, 230, 0.12);
+  border-radius: 0.75rem;
+  padding: 2rem 2.25rem;
+  backdrop-filter: blur(2px);
+}
+
+.scene-content-offset {
+  transform: translateY(-8%);
+}
+
+.scene-content h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 0.5rem; }
+.scene-content h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0 0 0.75rem; }
+.role-line { color: var(--text-muted); margin: 0 0 0.25rem; font-size: 1.05rem; }
+.dates-line { color: var(--ember-bright); font-style: normal; margin: 0 0 1rem; font-size: 0.95rem; }
+.scroll-hint { color: var(--text-muted); margin-top: 1.5rem; font-size: 0.9rem; }
+
+.contact-list, .bullet-list, .tag-grid {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.contact-list { list-style: none; padding-left: 0; }
+.contact-list li { margin-bottom: 0.35rem; }
+.bullet-list li { margin-bottom: 0.5rem; line-height: 1.5; color: var(--text-light); }
+
+.tag-grid {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tag {
+  background: rgba(255, 106, 61, 0.14);
+  border: 1px solid var(--ember-dark);
+  color: var(--text-light);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* Kaiju mascot: single silhouette that walks across the whole journey */
+.kaiju-mascot {
+  position: fixed;
+  bottom: 8%;
+  left: 0;
+  width: 160px;
+  height: 176px;
+  z-index: 1;
+  transform: translateX(0);
+  will-change: transform;
+}
+.mascot-svg { width: 100%; height: 100%; display: block; }
+.mascot-body { fill: var(--mascot-fill); }
+.mascot-tail { fill: var(--mascot-fill); }
+.mascot-spike { fill: var(--ember-dark); }
+.mascot-spike.small { fill: var(--ember-dark); }
+.mascot-eye { fill: var(--mascot-eye); }
+.mascot-shadow { fill: rgba(0, 0, 0, 0.35); }
+
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.kaiju-mascot .mascot-svg {
+  animation: mascot-bob 1.6s ease-in-out infinite;
+}
+
+/* Scene navigation dots */
+.scene-dots {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+}
+.scene-dots ol {
+  display: flex;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0.75rem;
+  background: rgba(11, 15, 26, 0.6);
+  border-radius: 999px;
+  border: 1px solid rgba(245, 240, 230, 0.12);
+}
+.dot {
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--rubble-light);
+  text-indent: -9999px;
+  overflow: hidden;
+}
+.dot:hover { background: var(--ember-bright); }
+.dot[aria-current="true"] { background: var(--ember); }
+
+/* Focus visibility throughout */
+a:focus-visible, .dot:focus-visible {
+  outline: 2px solid var(--ember-bright);
+  outline-offset: 2px;
+}
+
+/* Reduced motion: kill parallax, mascot movement/bob, smooth scroll-jacking */
+@media (prefers-reduced-motion: reduce) {
+  .kaiju-track { scroll-behavior: auto; }
+  .layer { transform: none !important; }
+  .kaiju-mascot { display: none; }
+  .mascot-svg { animation: none; }
+}
+
+/* Mobile fallback: drop horizontal scroll-jacking, stack scenes vertically */
+@media (max-width: 768px) {
+  .kaiju-track {
+    display: block;
+    height: auto;
+    width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+  }
+  .scene {
+    height: auto;
+    min-height: 70vh;
+    width: 100%;
+  }
+  .kaiju-mascot { display: none; }
+  .scene-content { padding: 1.5rem 1.25rem; }
+  .scene-content-offset { transform: none; }
+  .scene-dots { display: none; }
+}

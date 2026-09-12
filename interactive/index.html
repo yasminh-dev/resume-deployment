@@ -1,0 +1,145 @@
+---
+layout: kaiju
+title: Interactive Resume — Kaiju Showcase
+description: A side-scrolling, kaiju-themed interactive showcase of Yasmin Herrera's resume.
+permalink: /interactive/
+---
+{% assign r = site.data.resume %}
+<a class="skip-link" href="#scene-summary">Skip intro</a>
+
+<noscript>
+  <div class="noscript-banner">
+    JavaScript is off, so this is showing as a plain scrolling page instead of the animated version.
+    Prefer a plain-text resume instead? <a href="../">View the ATS-friendly resume</a>.
+  </div>
+</noscript>
+
+<a class="ats-link" href="../">&larr; ATS-friendly resume</a>
+
+<div class="kaiju-mascot" aria-hidden="true">
+  <svg viewBox="0 0 200 220" class="mascot-svg" role="img" aria-hidden="true">
+    <ellipse cx="100" cy="205" rx="70" ry="10" class="mascot-shadow"></ellipse>
+    <polygon points="70,150 40,205 55,208 78,165" class="mascot-body"></polygon>
+    <polygon points="130,150 160,205 145,208 122,165" class="mascot-body"></polygon>
+    <path d="M60,90 Q40,160 70,165 L130,165 Q160,160 140,90 Q120,60 100,60 Q80,60 60,90 Z" class="mascot-body"></path>
+    <path d="M60,95 C10,105 -20,90 0,70 C15,100 45,95 62,105 Z" class="mascot-tail"></path>
+    <circle cx="100" cy="45" r="34" class="mascot-body"></circle>
+    <circle cx="86" cy="40" r="4" class="mascot-eye"></circle>
+    <polygon points="95,15 100,-2 105,15" class="mascot-spike"></polygon>
+    <polygon points="80,20 84,4 90,22" class="mascot-spike"></polygon>
+    <polygon points="110,22 116,4 120,20" class="mascot-spike"></polygon>
+    <polygon points="92,58 100,72 108,58" class="mascot-spike small"></polygon>
+  </svg>
+</div>
+
+<main id="kaiju-track" class="kaiju-track">
+
+  <section id="scene-hero" class="scene scene-0" aria-label="Introduction">
+    <div class="layer layer-far" style="--depth:-40" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:-110" aria-hidden="true"></div>
+    <div class="scene-content">
+      <h1>{{ r.contact.name }}</h1>
+      <p class="role-line">{{ r.contact.title }} &middot; {{ r.contact.location }}</p>
+      <ul class="contact-list">
+        <li>{{ r.contact.email }}</li>
+        <li><a href="{{ r.contact.linkedin_url }}">{{ r.contact.linkedin_label }}</a></li>
+      </ul>
+      <p class="scroll-hint">Scroll to begin the rampage &rarr;</p>
+    </div>
+  </section>
+
+  <section id="scene-summary" class="scene scene-1" aria-label="Origin story">
+    <div class="layer layer-far" style="--depth:-55" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:-130" aria-hidden="true"></div>
+    <div class="scene-content">
+      <h2>Origin Story</h2>
+      <p>{{ r.summary }}</p>
+    </div>
+  </section>
+
+  <section id="scene-skills" class="scene scene-2" aria-label="Technical skills">
+    <div class="layer layer-far" style="--depth:-65" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:-150" aria-hidden="true"></div>
+    <div class="scene-content">
+      <h2>Arsenal</h2>
+      <ul class="tag-grid">
+        {% for skill in r.skills %}<li class="tag">{{ skill }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  {% assign scene_ids = "role-current,role-prior,role-intern" | split: "," %}
+  {% for job in r.experience %}
+  {% assign scene_id = scene_ids[forloop.index0] %}
+  {% assign depth_far = -70 | minus: forloop.index0 %}
+  {% assign depth_near = -160 | minus: forloop.index0 %}
+  <section id="scene-{{ scene_id }}" class="scene scene-{{ forloop.index | plus: 2 }}" aria-label="{{ job.title }} at {{ job.company }}">
+    <div class="layer layer-far" style="--depth:{{ depth_far }}" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:{{ depth_near }}" aria-hidden="true"></div>
+    <div class="scene-content">
+      <h2>{{ job.company }}</h2>
+      <p class="role-line">{{ job.title }} &middot; {{ job.location }}</p>
+      <p class="dates-line">{{ job.dates }}</p>
+      <ul class="bullet-list">
+        {% for bullet in job.bullets %}<li>{{ bullet }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endfor %}
+
+  <section id="scene-side" class="scene scene-6" aria-label="Additional experience">
+    <div class="layer layer-far" style="--depth:-90" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:-190" aria-hidden="true"></div>
+    <div class="scene-content scene-content-offset">
+      <h2>Side Quests</h2>
+      <ul class="bullet-list">
+        {% for item in r.additional %}<li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section id="scene-education" class="scene scene-7" aria-label="Education">
+    <div class="layer layer-far" style="--depth:-45" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:-100" aria-hidden="true"></div>
+    <div class="scene-content">
+      <h2>{{ r.education.school }}</h2>
+      <p class="role-line">{{ r.education.status }} &middot; {{ r.education.location }}</p>
+      <p class="dates-line">{{ r.education.dates }}</p>
+      <ul class="bullet-list">
+        {% for detail in r.education.details %}<li>{{ detail }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section id="scene-contact" class="scene scene-8" aria-label="Contact">
+    <div class="layer layer-far" style="--depth:-30" aria-hidden="true"></div>
+    <div class="layer layer-near" style="--depth:-80" aria-hidden="true"></div>
+    <div class="scene-content">
+      <h2>Get In Touch</h2>
+      <ul class="contact-list">
+        <li>{{ r.contact.email }}</li>
+        <li><a href="{{ r.contact.linkedin_url }}">{{ r.contact.linkedin_label }}</a></li>
+      </ul>
+      <p><a class="ats-link ats-link-final" href="../">&larr; View the ATS-friendly resume</a></p>
+    </div>
+  </section>
+
+</main>
+
+<nav class="scene-dots" aria-label="Scene navigation">
+  <ol>
+    <li><a href="#scene-hero" class="dot" data-scene="0" aria-label="Introduction"></a></li>
+    <li><a href="#scene-summary" class="dot" data-scene="1" aria-label="Origin story"></a></li>
+    <li><a href="#scene-skills" class="dot" data-scene="2" aria-label="Skills"></a></li>
+    <li><a href="#scene-role-current" class="dot" data-scene="3" aria-label="Current role"></a></li>
+    <li><a href="#scene-role-prior" class="dot" data-scene="4" aria-label="Prior role"></a></li>
+    <li><a href="#scene-role-intern" class="dot" data-scene="5" aria-label="Internship"></a></li>
+    <li><a href="#scene-side" class="dot" data-scene="6" aria-label="Side projects"></a></li>
+    <li><a href="#scene-education" class="dot" data-scene="7" aria-label="Education"></a></li>
+    <li><a href="#scene-contact" class="dot" data-scene="8" aria-label="Contact"></a></li>
+  </ol>
+</nav>
